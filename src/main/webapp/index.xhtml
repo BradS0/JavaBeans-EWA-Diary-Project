@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Registration Page</title>
+        <h:outputStylesheet library="css" name="styles.css"/>
+    </h:head>
+    <h:body>
+        <h3>Registration Page</h3>
+        <h:form>
+            <h:panelGrid columns ="3"
+                         columnClasses="leftalign, leftalign">
+                
+                <h:outputLabel value="Username: " for="username"/>
+                <h:inputText id="username" label ="Username"
+                             required ="true"
+                             value ="#{registrationBean.username}"/>
+                <h:message for="username"/>
+                
+                <h:outputLabel value="Password: " for="password"/>
+                <h:inputText id="password" label ="Password"
+                             required ="true"
+                             value ="#{registrationBean.password}"/>
+                <h:message for="password"/>
+                
+                <h:outputLabel value="Full Name: " for="fullName"/>
+                <h:inputText id="fullName" label ="Full Name"
+                             required ="true"
+                             value ="#{registrationBean.fullName}"/>
+                <h:message for="fullName"/>
+                
+                <h:outputLabel value="Address: " for="address"/>
+                <h:inputText id="address" label ="Address"
+                             required ="true"
+                             value ="#{registrationBean.address}"/>
+                <h:message for="address"/>
+                
+                <h:outputLabel value="Phone Number: " for="phoneNumber"/>
+                <h:inputText id="phoneNumber" label ="Phone Number"
+                             required ="true"
+                             value ="#{registrationBean.phoneNumber}"/>
+                <h:message for="phoneNumber"/>
+                
+                <h:outputLabel value="Email Address: " for="emailAddress"/>
+                <h:inputText id="emailAddress" label ="Email Address"
+                             required ="true"
+                             value ="#{registrationBean.emailAddress}"/>
+               <!-- <f:validator validatorId="emailValidator"/> -->
+                <h:message for="emailAddress"/>
+                
+                <h:panelGroup/>
+                <h:commandButton id="confirm" value="Confirm"
+                                 action="confirmation"/>
+                
+            </h:panelGrid>
+        </h:form>
+    </h:body>
+</html>
