@@ -5,6 +5,7 @@
  */
 package bradley.OnlineDiaryProject.ctrl;
 
+import javax.annotation.ManagedBean;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 
@@ -13,6 +14,7 @@ import javax.inject.Named;
  * @author Bradley
  */
 @Named
+@ManagedBean
 @RequestScoped
 public class RegistrationBean {
     private String username;
