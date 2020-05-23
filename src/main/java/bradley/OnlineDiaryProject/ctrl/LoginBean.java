@@ -5,6 +5,7 @@
  */
 package bradley.OnlineDiaryProject.ctrl;
 
+import javax.annotation.ManagedBean;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 
@@ -12,7 +13,7 @@ import javax.inject.Named;
  *
  * @author Bradley
  */
-@Named
+@Named(value="loginBean")
 @RequestScoped
 public class LoginBean {
 
@@ -38,5 +39,10 @@ public class LoginBean {
         this.password = password;
     }
     
+    public void login() {
+        if(username.equals("name") && password.equals("password")){
+            
+        }
+    }
     
 }

@@ -11,32 +11,31 @@ import javax.persistence.EntityManager;
  *
  * @author Bradley
  */
-public abstract class AbstractFacade<T> {
+public abstract class AbstractFacade<C> {
 
-    private Class<T> entityClass;
+    private Class<C> entityClass;
 
     
-    public AbstractFacade(Class<T> entityClass) {
+    public AbstractFacade(Class<C> entityClass) {
         this.entityClass = entityClass;
     }
     
     protected abstract EntityManager getEntityManager();
 
-    public void create(T entity) {
+    public void create(C entity) {
         getEntityManager().persist(entity);
     }
     
-    public T edit(T entity) {
+    public C edit(C entity) {
         return getEntityManager().merge(entity);
     }
 
-    public void remove(T entity) {
+    public void remove(C entity) {
         getEntityManager().remove(getEntityManager().merge(entity));
     }
 
-    public T find(Object id) {
+    public C find(Object id) {
         return getEntityManager().find(entityClass, id);
     }
-    
-    
+   
 }

@@ -1,9 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <persistence version="2.2" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd">
-  <!-- Define Persistence Unit -->
-  <persistence-unit name="OnlineDiaryPU">
-    <class>bradley.OnlineDiaryProject.ent.User</class>
-    <properties>
-    </properties>
-  </persistence-unit>
+    <!-- Define Persistence Unit -->
+    <persistence-unit name="OnlineDiaryPU" transaction-type="JTA">
+        <jta-data-source>java:app/jdbc/ONYETTB</jta-data-source>
+        <class>bradley.OnlineDiaryProject.ent.UserDetails</class>
+        <class>bradley.OnlineDiaryProject.ent.Appointment</class>
+        <class>bradley.OnlineDiaryProject.ent.UserLogin</class>
+        <properties>
+            <property name="javax.persistence.jdbc.url" value="jdbc:derby://localhost:1527/ONYETTB"/>
+            <property name="javax.persistence.jdbc.user" value="ONYETTB"/>
+            <property name="javax.persistence.jdbc.driver" value="org.apache.derby.jdbc.ClientDriver"/>
+            <property name="javax.persistence.jdbc.password" value="ONYETTB"/>
+            <property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>
+        </properties>
+    </persistence-unit>
 </persistence>

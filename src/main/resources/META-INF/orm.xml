@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings xmlns="http://java.sun.com/xml/ns/persistence/orm"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm    
+http://java.sun.com/xml/ns/persistence/orm_1_0.xsd"
+    version="1.0">
+
+    <table-generator name="id_gen" table="ref_sequence" pk-column-name="gen_name" value-column-name="gen_val" pk-column-value="gen_val" initial-value="1" schema="test"  allocation-size="1"/>
+    
+</entity-mappings>
+

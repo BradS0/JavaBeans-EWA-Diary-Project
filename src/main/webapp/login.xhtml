@@ -14,19 +14,17 @@
                 
                 <h:outputLabel value="Username: " for="username"/>
                 <h:inputText id="username" label ="Username"
-                             required ="true"
-                             value ="#{loginBean.username}"/>
+                             value ="${loginBean.username}"/>
                 <h:message for="username"/>
                 
                 <h:outputLabel value="Password: " for="password"/>
-                <h:inputText id="password" label ="Password"
-                             required ="true"
-                             value ="#{loginBean.password}"/>
+                <h:inputSecret id="password" label ="Password"
+                             value ="${loginBean.password}"/>
                 <h:message for="password"/>
                 
                 <h:panelGroup/>
                 <h:commandButton id="submit" value="Submit"
-                                 action="confirmation"/>
+                                 action="${loginBean.login()}"/>
                 <h:panelGroup/>
                 <h:commandButton id="forgotPassword" value="Forgot Password?"
                                  action ="resetPassword"/>

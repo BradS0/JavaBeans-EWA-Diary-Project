@@ -5,6 +5,7 @@
  */
 package bradley.OnlineDiaryProject.ent;
 
+import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
@@ -12,20 +13,20 @@ import javax.persistence.PersistenceContext;
  *
  * @author Bradley
  */
-public class UserFacade extends AbstractFacade<User> {
+
+@Stateless
+public class UserDetailsFacade extends AbstractFacade<UserDetails> {
     @PersistenceContext(unitName = "OnlineDiaryPU")
     private EntityManager em;
-    
+ 
     @Override
     protected EntityManager getEntityManager() {
         return em;
     }
     
-    public UserFacade() {
-        super(User.class);
+    public UserDetailsFacade() {
+        super(UserDetails.class);
     }
-
-// I believe that this is where I should now first send the new user to the DB.
-
-
+    
+    
 }
