@@ -8,6 +8,7 @@ package bradley.OnlineDiaryProject.ent;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
@@ -20,6 +21,7 @@ public class UserLoginFacade extends AbstractFacade<UserLogin> {
     
     @PersistenceContext(unitName = "OnlineDiaryPU")
     private EntityManager em;
+    private List<UserLogin> credentialResults;
     
     @Override
     protected EntityManager getEntityManager() {
@@ -40,12 +42,14 @@ public class UserLoginFacade extends AbstractFacade<UserLogin> {
     }
     
     public List<UserLogin> checkUserCredentials(String username, String password){
-        UserLogin credentialCheck = new UserLogin();
-        credentialCheck.setUsername(username);
-        credentialCheck.setPassword(password);
-        Query q = em.createQuery("SELECT u FROM UserLogin u WHERE u.username ="+username+" AND u.password ="+password+";");
-        List<UserLogin> credentialResults = q.getResultList();
-        return credentialResults;
+        Query q = em.createQuery("SELECT u FROM UserLogin u WHERE u.username = '"+username+"' AND u.password ='"+password+"'");
+        try {
+            credentialResults = q.getResultList();
+            return credentialResults; 
+        } catch (NoResultException e){
+            System.out.println(credentialResults);
+        }
+        
     }
 }
    

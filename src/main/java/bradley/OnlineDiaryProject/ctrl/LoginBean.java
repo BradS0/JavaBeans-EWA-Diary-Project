@@ -5,7 +5,10 @@
  */
 package bradley.OnlineDiaryProject.ctrl;
 
+import bradley.OnlineDiaryProject.bus.LoginService;
+import bradley.OnlineDiaryProject.ent.UserLogin;
 import javax.annotation.ManagedBean;
+import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 
@@ -16,33 +19,36 @@ import javax.inject.Named;
 @Named(value="loginBean")
 @RequestScoped
 public class LoginBean {
-
-    private String username;
-    private String password;
-
+   
     public LoginBean() {
     }
     
-    public String getUsername() {
-        return username;
+    public UserLogin getUserDetails() {
+        return userDetails;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setUserDetails(UserLogin userDetails) {
+        this.userDetails = userDetails;
     }
 
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
+    @EJB
+    private LoginService ls;
+    private UserLogin userDetails = new UserLogin();
+    private String validationResult;
+    
+    public String loginCredentialCheck(){
+        ls.checkUserCredentials(userDetails);
+        validationResult = validationCheck(userDetails);
+        System.out.println(userDetails);
+        return validationResult;
     }
     
-    public void login() {
-        if(username.equals("name") && password.equals("password")){
-            
+    public String validationCheck(UserLogin loginCheck){
+        if(loginCheck != null){
+            return "home";
+        } else {
+            return "loginerror";
         }
+        
     }
-    
 }

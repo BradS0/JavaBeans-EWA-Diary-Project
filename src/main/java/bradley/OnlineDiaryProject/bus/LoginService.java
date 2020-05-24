@@ -7,6 +7,7 @@ package bradley.OnlineDiaryProject.bus;
 
 import bradley.OnlineDiaryProject.ent.UserLogin;
 import bradley.OnlineDiaryProject.ent.UserLoginFacade;
+import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 
@@ -19,9 +20,11 @@ public class LoginService {
 
 @EJB
 private UserLoginFacade uf;
+private List<UserLogin> fetchedCredentials;
 
-public void checkUserCredentials(UserLogin u){
-    // String usernameInput = uf.checkUserCredentials(username, password);
+public List<UserLogin> checkUserCredentials(UserLogin u){
+    fetchedCredentials = uf.checkUserCredentials(u.getUsername(), u.getPassword());
+    return fetchedCredentials;
 } 
     
 

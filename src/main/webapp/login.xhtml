@@ -3,35 +3,40 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html">
     <h:head>
-        <title>Login Page</title>
-        <h:outputStylesheet library="css" name="styles.css"/>
+        <title>Login Portal</title>
+        <h:outputStylesheet name="css/style.css"/>
     </h:head>
     <h:body>
-        <h3>Login Page</h3>
-        <h:form>
-            <h:panelGrid columns ="3"
-                         columnClasses="leftalign, leftalign">
-                
-                <h:outputLabel value="Username: " for="username"/>
-                <h:inputText id="username" label ="Username"
-                             value ="${loginBean.username}"/>
-                <h:message for="username"/>
-                
-                <h:outputLabel value="Password: " for="password"/>
-                <h:inputSecret id="password" label ="Password"
-                             value ="${loginBean.password}"/>
-                <h:message for="password"/>
-                
-                <h:panelGroup/>
-                <h:commandButton id="submit" value="Submit"
-                                 action="${loginBean.login()}"/>
-                <h:panelGroup/>
-                <h:commandButton id="forgotPassword" value="Forgot Password?"
-                                 action ="resetPassword"/>
-                <h:commandButton id="newUser" value="New User?"
-                                 action ="newUser"/>
-                
-            </h:panelGrid>
-        </h:form>
+        <div id="header">
+            <h3>Login Page</h3>
+        </div>
+        <div id="formLayout">
+            <h:form>
+                <h:panelGrid columns ="3"
+                             columnClasses="leftalign, leftalign">
+
+                    <h:outputLabel value="Username: " for="username"/>
+                    <h:inputText id="username" class="input" label ="Username"
+                                 value ="${loginBean.userDetails.username}"/>
+                    <h:message for="username"/>
+
+                    <h:outputLabel value="Password: " for="password"/>
+                    <h:inputSecret id="password" class="input" label ="Password"
+                                   value ="${loginBean.userDetails.password}"/>
+                    <h:message for="password"/>
+
+                    <h:panelGroup/>
+                    <h:commandButton id="submit" class="button" value="Submit"
+                                     action="${loginBean.loginCredentialCheck()}"/>
+                    <h:panelGroup/>
+                    <h:commandButton id="forgotPassword" class="button" value="Forgot Password?"
+                                     action ="resetPassword"/>
+                    <h:panelGroup/>
+                    <h:commandButton id="newUser" class="button" value="New User?"
+                                     action ="newUser"/>
+
+                </h:panelGrid>
+            </h:form>
+        </div>
     </h:body>
 </html>
