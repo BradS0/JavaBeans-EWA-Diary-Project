@@ -4,9 +4,30 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html">
     <h:head>
         <title>Homepage</title>
+        <h:outputStylesheet name="css/style.css"/>
     </h:head>
     <h:body>
-        Welcome to your homepage!
+        <div class="header">
+            <h3>Homepage</h3>
+        </div>
+        <div class="formLayout">
+            <h:form>
+                <div id="buttonContainer">
+                    <div id="buttonArrangement">
+                    <h:panelGrid columns="1">
+                        <h:commandButton id="onlineDiary" class="homepageButton" value="Online Diary"
+                                         action="onlineDiary"/>
+                        <h:commandButton id="recordSearch" class="homepageButton" value="Search Records"
+                                         action="recordSearch"/>
+                        <h:commandButton id="editAccountDetails" class="homepageButton" value="Edit Account Details"
+                                         action="editAccount"/>
+                        <h:commandButton id="contactList" class="homepageButton" value="Shared Contact List"
+                                         action="sharedContactList"/>
+                    </h:panelGrid>
+                    </div>
+                </div>
+            </h:form>
+        </div>
     </h:body>
 </html>
 

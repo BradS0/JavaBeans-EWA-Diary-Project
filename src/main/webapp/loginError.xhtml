@@ -4,12 +4,20 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html">
     <h:head>
         <title>Login Error</title>
+        <h:outputStylesheet name="css/style.css"/>
     </h:head>
     <h:body>
-        <h3> Sorry, Access Denied.</h3>
-        <p> Your login credentials could not be verified, or you do not have the
-            required authority to view this content.</p>
-        <p><h:link outcome="/login" value="Back to login" /></p>
+        <div class="header">
+            <h3> Sorry, Access Denied.</h3>
+        </div>
+        <div class="formLayout">
+            <h:form>
+                <p> Your login credentials could not be verified, or you do not have the
+                    required authority to view this content.</p>
+                <h:commandButton id="backToLogin" class="button" value="Back to Login"
+                                 action ="login"/>
+            </h:form>
+        </div>
     </h:body>
 </html>
 

@@ -31,7 +31,8 @@ import javax.xml.bind.annotation.XmlRootElement;
  *
  * @author Bradley
  */
-
+@Entity
+@Table(name = "APPOINTMENT")
 public class Appointment implements Serializable {
     
     private static final long serialVersionUID = 1L;
@@ -39,67 +40,85 @@ public class Appointment implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long appointmentId;
     
-    private Integer appointmentStart;
-    private Integer appointmentEnd;
-    
-    private String appointmentDetails;
-    
-    private Long appointmentCreator;
-    
-    private List<UserLogin> appointmentParticipants = new ArrayList<>();
+    @Column
+    private Integer startTime;
+    @Column
+    private Integer endTime;
+    @Column
+    private String details;
+    @Column
+    private Long creator;
+    @JoinColumn
+    private List<UserLogin> participants = new ArrayList<>();
+    @Column
+    private String dayOfWeek;
 
-    public Long getAppointmentId() {
+    public Long getId() {
         return appointmentId;
     }
 
-    public void setAppointmentId(Long appointmentId) {
+    public void setId(Long id) {
         this.appointmentId = appointmentId;
     }
 
-    public Integer getAppointmentStart() {
-        return appointmentStart;
+    public Integer getStartTime() {
+        return startTime;
     }
 
-    public void setAppointmentStart(Integer appointmentStart) {
-        this.appointmentStart = appointmentStart;
+    public void setStartTime(Integer startTime) {
+        this.startTime = startTime;
     }
 
-    public Integer getAppointmentEnd() {
-        return appointmentEnd;
+    public Integer getEndTime() {
+        return endTime;
     }
 
-    public void setAppointmentEnd(Integer appointmentEnd) {
-        this.appointmentEnd = appointmentEnd;
+    public void setEndTime(Integer endTime) {
+        this.endTime = endTime;
     }
 
-    public String getAppointmentDetails() {
-        return appointmentDetails;
+    public String getDetails() {
+        return details;
     }
 
-    public void setAppointmentDetails(String appointmentDetails) {
-        this.appointmentDetails = appointmentDetails;
+    public void setDetails(String details) {
+        this.details = details;
     }
 
-    public Long getAppointmentCreator() {
-        return appointmentCreator;
+    public Long getCreator() {
+        return creator;
     }
 
-    public void setAppointmentCreator(Long appointmentCreator) {
-        this.appointmentCreator = appointmentCreator;
+    public void setCreator(Long creator) {
+        this.creator = creator;
     }
 
-    public List<UserLogin> getAppointmentParticipants() {
-        return appointmentParticipants;
+    public List<UserLogin> getParticipants() {
+        return participants;
     }
 
-    public void setAppointmentParticipants(List<UserLogin> appointmentParticipants) {
-        this.appointmentParticipants = appointmentParticipants;
+    public void setParticipants(List<UserLogin> participants) {
+        this.participants = participants;
+    }
+
+    public String getDayOfWeek() {
+        return dayOfWeek;
+    }
+
+    public void setDayOfWeek(String dayOfWeek) {
+        this.dayOfWeek = dayOfWeek;
     }
 
     @Override
     public int hashCode() {
-        int hash = 7;
+        int hash = 5;
         hash = 67 * hash + Objects.hashCode(this.appointmentId);
+        hash = 67 * hash + Objects.hashCode(this.startTime);
+        hash = 67 * hash + Objects.hashCode(this.endTime);
+        hash = 67 * hash + Objects.hashCode(this.details);
+        hash = 67 * hash + Objects.hashCode(this.creator);
+        hash = 67 * hash + Objects.hashCode(this.participants);
+        hash = 67 * hash + Objects.hashCode(this.dayOfWeek);
         return hash;
     }
 
@@ -115,154 +134,28 @@ public class Appointment implements Serializable {
             return false;
         }
         final Appointment other = (Appointment) obj;
+        if (!Objects.equals(this.details, other.details)) {
+            return false;
+        }
+        if (!Objects.equals(this.dayOfWeek, other.dayOfWeek)) {
+            return false;
+        }
         if (!Objects.equals(this.appointmentId, other.appointmentId)) {
             return false;
         }
-        return true;
-    }
-}
-
-
-
-
-
-
-
-
-
-
-
-/*
-@Entity
-@Table(name = "APPOINTMENT_TABLE")
-@XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "Appointment.findAll", query = "SELECT a FROM Appointment a"),
-    @NamedQuery(name = "Appointment.findByAppointmentid", query = "SELECT a FROM Appointment a WHERE a.appointmentid = :appointmentid"),
-    @NamedQuery(name = "Appointment.findByAppointmentstart", query = "SELECT a FROM Appointment a WHERE a.appointmentstart = :appointmentstart"),
-    @NamedQuery(name = "Appointment.findByAppointmentend", query = "SELECT a FROM Appointment a WHERE a.appointmentend = :appointmentend"),
-    @NamedQuery(name = "Appointment.findByAppointmentdetails", query = "SELECT a FROM Appointment a WHERE a.appointmentdetails = :appointmentdetails"),
-    @NamedQuery(name = "Appointment.findByAppointmentparticipants", query = "SELECT a FROM Appointment a WHERE a.appointmentparticipants = :appointmentparticipants")})
-public class Appointment implements Serializable {
-
-    private static final long serialVersionUID = 1L;
-    @Id
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "APPOINTMENTID", nullable = false)
-    private Integer appointmentid;
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "APPOINTMENTSTART", nullable = false)
-    @Temporal(TemporalType.TIME)
-    private Date appointmentstart;
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "APPOINTMENTEND", nullable = false)
-    @Temporal(TemporalType.TIME)
-    private Date appointmentend;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 100)
-    @Column(name = "APPOINTMENTDETAILS", nullable = false, length = 100)
-    private String appointmentdetails;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 150)
-    @Column(name = "APPOINTMENTPARTICIPANTS", nullable = false, length = 150)
-    private String appointmentparticipants;
-    @JoinColumn(name = "APPOINTMENTCREATOR", referencedColumnName = "USERDETAILSID", nullable = false)
-    @ManyToOne(optional = false)
-    private UserDetails appointmentcreator;
-
-    public Appointment() {
-    }
-
-    public Appointment(Integer appointmentid) {
-        this.appointmentid = appointmentid;
-    }
-
-    public Appointment(Integer appointmentid, Date appointmentstart, Date appointmentend, String appointmentdetails, String appointmentparticipants) {
-        this.appointmentid = appointmentid;
-        this.appointmentstart = appointmentstart;
-        this.appointmentend = appointmentend;
-        this.appointmentdetails = appointmentdetails;
-        this.appointmentparticipants = appointmentparticipants;
-    }
-
-    public Integer getAppointmentid() {
-        return appointmentid;
-    }
-
-    public void setAppointmentid(Integer appointmentid) {
-        this.appointmentid = appointmentid;
-    }
-
-    public Date getAppointmentstart() {
-        return appointmentstart;
-    }
-
-    public void setAppointmentstart(Date appointmentstart) {
-        this.appointmentstart = appointmentstart;
-    }
-
-    public Date getAppointmentend() {
-        return appointmentend;
-    }
-
-    public void setAppointmentend(Date appointmentend) {
-        this.appointmentend = appointmentend;
-    }
-
-    public String getAppointmentdetails() {
-        return appointmentdetails;
-    }
-
-    public void setAppointmentdetails(String appointmentdetails) {
-        this.appointmentdetails = appointmentdetails;
-    }
-
-    public String getAppointmentparticipants() {
-        return appointmentparticipants;
-    }
-
-    public void setAppointmentparticipants(String appointmentparticipants) {
-        this.appointmentparticipants = appointmentparticipants;
-    }
-
-    public UserDetails getAppointmentcreator() {
-        return appointmentcreator;
-    }
-
-    public void setAppointmentcreator(UserDetails appointmentcreator) {
-        this.appointmentcreator = appointmentcreator;
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (appointmentid != null ? appointmentid.hashCode() : 0);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Appointment)) {
+        if (!Objects.equals(this.startTime, other.startTime)) {
             return false;
         }
-        Appointment other = (Appointment) object;
-        if ((this.appointmentid == null && other.appointmentid != null) || (this.appointmentid != null && !this.appointmentid.equals(other.appointmentid))) {
+        if (!Objects.equals(this.endTime, other.endTime)) {
+            return false;
+        }
+        if (!Objects.equals(this.creator, other.creator)) {
+            return false;
+        }
+        if (!Objects.equals(this.participants, other.participants)) {
             return false;
         }
         return true;
-    }
-
-    @Override
-    public String toString() {
-        return "bradley.OnlineDiaryProject.ent.Appointment[ appointmentid=" + appointmentid + " ]";
-    }
+    }    
     
 }
-
-*/

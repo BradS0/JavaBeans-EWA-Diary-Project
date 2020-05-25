@@ -24,7 +24,7 @@ public class RegistrationService {
     @EJB
     private UserDetailsFacade udf;
     
-    public UserLogin addNewUser(UserLogin u){
+   public UserLogin addNewUser(UserLogin u){
         uf.create(u);
         return u;
     }

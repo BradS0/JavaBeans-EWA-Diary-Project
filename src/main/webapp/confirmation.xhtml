@@ -5,29 +5,34 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>Confirmation Page</title>
+        <h:outputStylesheet name="css/style.css"/>
     </h:head>
     <h:body>
-        <h3> Confirmation Page </h3>
-        <h:form>
-            <h:panelGrid columns="2">
-
-                <h:outputText value="Username: "/>
-            #{registrationBean.newUser.username}
-                <h:outputText value="Password: "/>
-            #{registrationBean.newUser.password}
-                <h:outputText value="Full Name: "/>
-            #{registrationBean.newUserDetails.fullName}
-                <h:outputText value="Address: "/>
-            #{registrationBean.newUserDetails.address}
-                <h:outputText value="Phone Number: "/>
-            #{registrationBean.newUserDetails.contactNumber}
-                <h:outputText value="Email Address: "/>
-            #{registrationBean.newUserDetails.emailAddress}
-            </h:panelGrid>
-            <h:commandButton id="home" value="Confirm Details"
-                             action="home">
-            </h:commandButton>
-        </h:form>
+        <div class="header">
+            <h3> Confirmation Page </h3>
+        </div>
+        <div class="formLayout">
+            <h:form>
+                <div class="inputForm">
+                    <h:panelGrid columns="2">
+                        <h:outputText value="Username: "/>
+                        #{registrationBean.newUser.username}
+                        <h:outputText value="Password: "/>
+                        #{registrationBean.newUser.password}
+                        <h:outputText value="Full Name: "/>
+                        #{registrationBean.newUserDetails.fullName}
+                        <h:outputText value="Address: "/>
+                        #{registrationBean.newUserDetails.address}
+                        <h:outputText value="Phone Number: "/>
+                        #{registrationBean.newUserDetails.contactNumber}
+                        <h:outputText value="Email Address: "/>
+                        #{registrationBean.newUserDetails.emailAddress}
+                    </h:panelGrid>
+                </div>
+                <h:commandButton id="confirm" class="button" value="Confirm Details"
+                                 action="#{registrationBean.createUser()}"/>
+            </h:form>
+        </div>
     </h:body>
 </html>
 

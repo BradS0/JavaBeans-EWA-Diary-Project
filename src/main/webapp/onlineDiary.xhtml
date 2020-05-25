@@ -1,0 +1,74 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <h:head>
+        <title>Online Diary</title>
+        <h:outputStylesheet name="css/style.css"/>
+    </h:head>
+    <h:body>
+        <div class="header"> 
+            <h3>Online Diary</h3>
+        </div>
+        <div class="formLayout">
+            <h:form>
+                <div id='dropdownLayout'>
+                    <h:selectOneMenu id="dayInput" value="#{onlineDiaryController.dayChoice}">
+                        <f:selectItem itemValue="Monday" itemLabel="Monday"/>
+                        <f:selectItem itemValue="Tuesday" itemLabel="Tuesday"/>
+                        <f:selectItem itemValue="Wednesday" itemLabel="Wednesday"/>
+                        <f:selectItem itemValue="Thursday" itemLabel="Thursday"/>
+                        <f:selectItem itemValue="Friday" itemLabel="Friday"/>
+                        <f:selectItem itemValue="Saturday" itemLabel="Saturday"/>
+                        <f:selectItem itemValue="Sunday" itemLabel="Sunday"/>
+                    </h:selectOneMenu>
+                </div>
+                <h:commandButton id="updateTableBtn" class="button" value="Update Table"
+                                 action="#{onlineDiaryBean.loadTimetable()}">
+                    <f:ajax event="click" execute="@form" render="@all"/>
+                </h:commandButton>
+            </h:form>
+            <div id="tableLayout">
+                <h:dataTable value="#{onlineDiaryBean.timetable}" var ="odc">
+                    <h:column>
+                        //Column Header
+                        <f:facet name="header">Appointment Start Time:</f:facet>
+                        //Row Record
+                        #{odc.startTime}
+                    </h:column>
+
+                    <h:column>
+                        //Column Header
+                        <f:facet name="header">Appointment End Time:</f:facet>
+                        //Row Record
+                        #{odc.endTime}
+                    </h:column>
+
+                    <h:column>
+                        //Column Header
+                        <f:facet name="header">Appointment Description:</f:facet>
+                        //Row Record
+                        #{odc.description}
+                    </h:column>
+
+                    <h:column>
+                        //Column Header
+                        <f:facet name="header">Appointment Creator:</f:facet>
+                        //Row Record
+                        #{odc.creator}
+                    </h:column>
+
+                    <h:column>
+                        //Column Header
+                        <f:facet name="header">Appointment Guests:</f:facet>
+                        //Row Record
+                        #{odc.guests}
+                    </h:column>
+                </h:dataTable>
+            </div>
+        </div>
+    </h:body>
+</html>
+

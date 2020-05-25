@@ -18,14 +18,13 @@ import javax.ejb.Stateless;
 @Stateless
 public class LoginService {
 
-@EJB
-private UserLoginFacade uf;
-private List<UserLogin> fetchedCredentials;
+    @EJB
+    private UserLoginFacade uf;
+    private UserLogin fetchedCredentials;
 
-public List<UserLogin> checkUserCredentials(UserLogin u){
-    fetchedCredentials = uf.checkUserCredentials(u.getUsername(), u.getPassword());
-    return fetchedCredentials;
-} 
-    
+    public UserLogin checkUserCredentials(UserLogin u) {
+        fetchedCredentials = uf.checkUserCredentials(u.getId(), u.getUsername(), u.getPassword());
+        return fetchedCredentials;
+    }
 
 }

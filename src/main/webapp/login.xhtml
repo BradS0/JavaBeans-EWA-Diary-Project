@@ -7,35 +7,37 @@
         <h:outputStylesheet name="css/style.css"/>
     </h:head>
     <h:body>
-        <div id="header">
+        <div class="header">
             <h3>Login Page</h3>
         </div>
-        <div id="formLayout">
+        <div class="formLayout">
             <h:form>
-                <h:panelGrid columns ="3"
-                             columnClasses="leftalign, leftalign">
+                <div class="inputForm">
+                     <h:panelGrid columns ="3"
+                     columnClasses="leftalign, leftalign">
 
                     <h:outputLabel value="Username: " for="username"/>
                     <h:inputText id="username" class="input" label ="Username"
-                                 value ="${loginBean.userDetails.username}"/>
+                                 value ="#{loginBean.userDetails.username}"/>
                     <h:message for="username"/>
 
                     <h:outputLabel value="Password: " for="password"/>
                     <h:inputSecret id="password" class="input" label ="Password"
-                                   value ="${loginBean.userDetails.password}"/>
+                                   value ="#{loginBean.userDetails.password}"/>
                     <h:message for="password"/>
 
                     <h:panelGroup/>
                     <h:commandButton id="submit" class="button" value="Submit"
-                                     action="${loginBean.loginCredentialCheck()}"/>
+                                     binding="#{loginBean.submitCredentialBtn}"
+                                     action="#{loginBean.loginCredentialCheck()}"/>
                     <h:panelGroup/>
                     <h:commandButton id="forgotPassword" class="button" value="Forgot Password?"
                                      action ="resetPassword"/>
                     <h:panelGroup/>
                     <h:commandButton id="newUser" class="button" value="New User?"
                                      action ="newUser"/>
-
-                </h:panelGrid>
+                    </h:panelGrid>
+                </div>
             </h:form>
         </div>
     </h:body>
