@@ -27,7 +27,7 @@ html{
     background: radial-gradient(ellipse at center, rgb(255,255,255) 0%, rgb(247,247,247) 60%, rgb(134,82,255) 100%);
 }
 
-.inputForm, #buttonContainer, #buttonArrangement, javax_faces_developmentstage_messages{
+.inputForm, #buttonContainer, .buttonArrangement, javax_faces_developmentstage_messages, .header{
     width: 50%;
     margin: auto;
 }
@@ -89,4 +89,12 @@ html{
 
 #dropdownLayout {
     padding-bottom: 20px;
+}
+
+#updateTableBtn {
+    padding: 20px;
+}
+
+#guestDiary {
+    padding-left: 15px;
 }

@@ -19,11 +19,18 @@ public class UserDetailsFacade extends AbstractFacade<UserDetails> {
     @PersistenceContext(unitName = "OnlineDiaryPU")
     private EntityManager em;
  
+    /**
+     *
+     * @return
+     */
     @Override
     protected EntityManager getEntityManager() {
         return em;
     }
     
+    /**
+     *
+     */
     public UserDetailsFacade() {
         super(UserDetails.class);
     }

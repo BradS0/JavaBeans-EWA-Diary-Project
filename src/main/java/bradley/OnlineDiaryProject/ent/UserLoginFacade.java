@@ -24,24 +24,47 @@ public class UserLoginFacade extends AbstractFacade<UserLogin> {
     private List<UserLogin> credentialResults;
     private UserLogin fetchedUser;
 
+    /**
+     *
+     * @return
+     */
     @Override
     protected EntityManager getEntityManager() {
         return em;
     }
 
+    /**
+     *
+     */
     public UserLoginFacade() {
         super(UserLogin.class);
     }
 
-    public UserLogin createUserLogin(Long id, String username, String password) {
+    /**
+     * Sets the properties of the new user to the user inputs, and then persists them to the database.
+     * @param id
+     * @param username
+     * @param password
+     * @param ud
+     * @return
+     */
+    public UserLogin createUserLogin(Long id, String username, String password, UserDetails ud) {
         UserLogin newU = new UserLogin();
         newU.setId(id);
         newU.setUsername(username);
         newU.setPassword(password);
+        ud.setUserId(newU);
         em.persist(newU);
         return newU;
     }
 
+    /**
+     * Returns fetched user logins (if any) based on the login input by the user.
+     * @param id
+     * @param username
+     * @param password
+     * @return
+     */
     public UserLogin checkUserCredentials(Long id, String username, String password) {
         UserLogin userCredentials = new UserLogin();
         userCredentials.setId(id);

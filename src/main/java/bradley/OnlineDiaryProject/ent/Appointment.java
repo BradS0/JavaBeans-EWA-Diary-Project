@@ -53,58 +53,114 @@ public class Appointment implements Serializable {
     @Column
     private String dayOfWeek;
 
+    /**
+     *
+     * @return
+     */
     public Long getId() {
         return appointmentId;
     }
 
+    /**
+     *
+     * @param id
+     */
     public void setId(Long id) {
         this.appointmentId = appointmentId;
     }
 
+    /**
+     *
+     * @return
+     */
     public Integer getStartTime() {
         return startTime;
     }
 
+    /**
+     *
+     * @param startTime
+     */
     public void setStartTime(Integer startTime) {
         this.startTime = startTime;
     }
 
+    /**
+     *
+     * @return
+     */
     public Integer getEndTime() {
         return endTime;
     }
 
+    /**
+     *
+     * @param endTime
+     */
     public void setEndTime(Integer endTime) {
         this.endTime = endTime;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getDetails() {
         return details;
     }
 
+    /**
+     *
+     * @param details
+     */
     public void setDetails(String details) {
         this.details = details;
     }
 
+    /**
+     *
+     * @return
+     */
     public Long getCreator() {
         return creator;
     }
 
+    /**
+     *
+     * @param creator
+     */
     public void setCreator(Long creator) {
         this.creator = creator;
     }
 
+    /**
+     *
+     * @return
+     */
     public List<UserLogin> getParticipants() {
         return participants;
     }
 
+    /**
+     *
+     * @param participants
+     */
     public void setParticipants(List<UserLogin> participants) {
         this.participants = participants;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getDayOfWeek() {
         return dayOfWeek;
     }
 
+    /**
+     *
+     * @param dayOfWeek
+     */
     public void setDayOfWeek(String dayOfWeek) {
         this.dayOfWeek = dayOfWeek;
     }

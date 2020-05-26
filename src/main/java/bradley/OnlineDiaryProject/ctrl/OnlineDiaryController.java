@@ -24,9 +24,16 @@ public class OnlineDiaryController {
     private Appointment userInput = new Appointment();
     private Appointment fetchedTableInfo;
     
+    /**
+     *
+     */
     public OnlineDiaryController(){
     }
     
+    /**
+     * Fetches any appointment information from the database that is for the current user.
+     * @return
+     */
     public Appointment loadTimetable(){
         fetchedTableInfo = ods.fetchTimetableInfo(userInput);
         return fetchedTableInfo;

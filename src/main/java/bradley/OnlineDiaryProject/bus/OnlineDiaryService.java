@@ -21,6 +21,11 @@ public class OnlineDiaryService {
     private AppointmentFacade af;
     private Appointment fetchedAppointment;
 
+    /**
+     * Initialises appointment information fetch from the database based on the day of the week input by the user on the OnlineDiary facelet.
+     * @param a
+     * @return
+     */
     public Appointment fetchTimetableInfo(Appointment a) {
         fetchedAppointment = af.dayChoice(a.getDayOfWeek());
         return fetchedAppointment;

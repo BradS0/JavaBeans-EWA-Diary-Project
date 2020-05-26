@@ -24,11 +24,22 @@ public class RegistrationService {
     @EJB
     private UserDetailsFacade udf;
     
-   public UserLogin addNewUser(UserLogin u){
+    /**
+     * Initialises the persisting of the new user.
+     * @param u
+     * @return
+     */
+    public UserLogin addNewUser(UserLogin u){
         uf.create(u);
         return u;
     }
     
+    /**
+     * Initialises the persisting of the new user details.
+     * @param uinf
+     * @param u
+     * @return
+     */
     public UserDetails addNewUserInfo(UserDetails uinf, UserLogin u){
         udf.create(uinf); 
         return uinf;

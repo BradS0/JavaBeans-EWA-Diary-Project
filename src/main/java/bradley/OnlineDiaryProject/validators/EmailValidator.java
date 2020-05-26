@@ -23,6 +23,13 @@ import javax.faces.validator.ValidatorException;
 @FacesValidator
 public class EmailValidator implements Validator {
     
+    /**
+     *
+     * @param facesContext
+     * @param uiComponent
+     * @param value
+     * @throws ValidatorException
+     */
     @Override
     public void validate(FacesContext facesContext, UIComponent uiComponent,
             Object value) throws ValidatorException {

@@ -43,26 +43,50 @@ public class UserLogin implements Serializable {
     @Column
     private String password;
 
+    /**
+     *
+     * @return
+     */
     public Long getId() {
         return id;
     }
 
+    /**
+     *
+     * @param id
+     */
     public void setId(Long id) {
         this.id = id;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getUsername() {
         return username;
     }
 
+    /**
+     *
+     * @param username
+     */
     public void setUsername(String username) {
         this.username = username;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getPassword() {
         return password;
     }
 
+    /**
+     *
+     * @param password
+     */
     public void setPassword(String password) {
         this.password = password;
     }

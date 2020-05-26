@@ -24,22 +24,41 @@ import javax.inject.Named;
 @RequestScoped
 public class RegistrationController {
 
+    /**
+     *
+     * @return
+     */
     public UserLogin getNewUser() {
         return newUser;
     }
 
+    /**
+     *
+     * @param newUser
+     */
     public void setNewUser(UserLogin newUser) {
         this.newUser = newUser;
     }
 
+    /**
+     *
+     * @return
+     */
     public UserDetails getNewUserDetails() {
         return newUserDetails;
     }
 
+    /**
+     *
+     * @param newUserDetails
+     */
     public void setNewUserDetails(UserDetails newUserDetails) {
         this.newUserDetails = newUserDetails;
     }
     
+    /**
+     *
+     */
     public RegistrationController(){
     }
     
@@ -48,7 +67,10 @@ public class RegistrationController {
     private UserLogin newUser = new UserLogin();
     private UserDetails newUserDetails = new UserDetails();
 
-
+    /**
+     * Initiates the registrationService, passing the newly input details to their appropriate functions to be persisted to the database
+     * @return
+     */
     public String createUser(){ 
         rs.addNewUser(newUser);
         rs.addNewUserInfo(newUserDetails, newUser);

@@ -15,12 +15,40 @@ import javax.el.ELContext;
 import javax.el.ELException;
 import javax.el.ELResolver;
 
+/**
+ *
+ * @author Bradley
+ */
 public class JsfCrudELResolver extends ELResolver {
+
+    /**
+     *
+     */
     public static final String JSFCRUD_CLASS = "jsfcrud_class";
+
+    /**
+     *
+     */
     public static final String JSFCRUD_METHOD = "jsfcrud_method";
+
+    /**
+     *
+     */
     public static final String JSFCRUD_PARAMS = "jsfcrud_params";
+
+    /**
+     *
+     */
     public static final String JSFCRUD_INVOKE = "jsfcrud_invoke";
+
+    /**
+     *
+     */
     public static final String JSFCRUD_TRANSFORM = "jsfcrud_transform";
+
+    /**
+     *
+     */
     public static final String JSFCRUD_NULL = "jsfcrud_null";
     
     /**

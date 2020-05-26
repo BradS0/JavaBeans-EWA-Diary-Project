@@ -24,13 +24,24 @@ import javax.persistence.NoResultException;
 @RequestScoped
 public class LoginBean {
 
+    /**
+     *
+     */
     public LoginBean() {
     }
 
+    /**
+     *
+     * @return
+     */
     public UserLogin getUserDetails() {
         return userDetails;
     }
 
+    /**
+     *
+     * @param userDetails
+     */
     public void setUserDetails(UserLogin userDetails) {
         this.userDetails = userDetails;
     }
@@ -44,14 +55,26 @@ public class LoginBean {
     private FacesContext errorContext;
     private UIComponent submitCredentialBtn;
 
+    /**
+     *
+     * @return
+     */
     public UIComponent getSubmitCredentialBtn() {
         return submitCredentialBtn;
     }
 
+    /**
+     *
+     * @param submitCredentialBtn
+     */
     public void setSubmitCredentialBtn(UIComponent submitCredentialBtn) {
         this.submitCredentialBtn = submitCredentialBtn;
     }
 
+    /**
+     * Initiates the fetch of logins from the database with the same credentials as the one entered, if any match they are passed to the checkUsernamePassword function to be checked.
+     * @return
+     */
     public String loginCredentialCheck() {
         if (!userDetails.getUsername().equals("")) {
             try {
@@ -67,6 +90,12 @@ public class LoginBean {
         return loginResult;
     }
 
+    /**
+     * Checks the credentials fetched from the database against the credentials submitted by the user, returning the appropriate page based on result.
+     * @param u
+     * @param fetchedLogin
+     * @return
+     */
     public String checkUsernamePassword(UserLogin u, UserLogin fetchedLogin) {
         // Checks to see if fetched username and password match that of entered credentials.
         if (fetchedLogin != null && fetchedLogin.getUsername().equals(u.getUsername()) && fetchedLogin.getPassword().equals(u.getPassword())) {

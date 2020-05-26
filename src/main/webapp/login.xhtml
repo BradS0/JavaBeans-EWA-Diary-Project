@@ -13,29 +13,32 @@
         <div class="formLayout">
             <h:form>
                 <div class="inputForm">
-                     <h:panelGrid columns ="3"
-                     columnClasses="leftalign, leftalign">
+                    <h:panelGrid columns ="3"
+                                 columnClasses="leftalign, leftalign">
 
-                    <h:outputLabel value="Username: " for="username"/>
-                    <h:inputText id="username" class="input" label ="Username"
-                                 value ="#{loginBean.userDetails.username}"/>
-                    <h:message for="username"/>
+                        <h:outputLabel value="Username: " for="username"/>
+                        <h:inputText id="username" class="input" label ="Username"
+                                     value ="#{loginBean.userDetails.username}"/>
+                        <h:message for="username"/>
 
-                    <h:outputLabel value="Password: " for="password"/>
-                    <h:inputSecret id="password" class="input" label ="Password"
-                                   value ="#{loginBean.userDetails.password}"/>
-                    <h:message for="password"/>
+                        <h:outputLabel value="Password: " for="password"/>
+                        <h:inputSecret id="password" class="input" label ="Password"
+                                       value ="#{loginBean.userDetails.password}"/>
+                        <h:message for="password"/>
 
-                    <h:panelGroup/>
-                    <h:commandButton id="submit" class="button" value="Submit"
-                                     binding="#{loginBean.submitCredentialBtn}"
-                                     action="#{loginBean.loginCredentialCheck()}"/>
-                    <h:panelGroup/>
-                    <h:commandButton id="forgotPassword" class="button" value="Forgot Password?"
-                                     action ="resetPassword"/>
-                    <h:panelGroup/>
-                    <h:commandButton id="newUser" class="button" value="New User?"
-                                     action ="newUser"/>
+                        <h:panelGroup/>
+                        <h:commandButton id="submit" class="button" value="Submit"
+                                         binding="#{loginBean.submitCredentialBtn}"
+                                         action="#{loginBean.loginCredentialCheck()}"/>
+                        <h:panelGroup/>
+                        <h:commandButton id="forgotPassword" class="button" value="Forgot Password?"
+                                         action ="resetPassword"/>
+                        <h:panelGroup/>
+                        <h:commandButton id="newUser" class="button" value="New User?"
+                                         action ="newUser"/>
+                        <h:panelGroup/>
+                        <h:commandButton id="guest" class="button" value="Continue as Guest"
+                                         action="homepageGuest"/>
                     </h:panelGrid>
                 </div>
             </h:form>

@@ -15,7 +15,7 @@
         <div class="formLayout">
             <h:form>
                 <div id='dropdownLayout'>
-                    <h:selectOneMenu id="dayInput" value="#{onlineDiaryController.dayChoice}">
+                    <h:selectOneMenu id="dayInput"> <!-- value="#{onlineDiaryController.dayChoice}" -->
                         <f:selectItem itemValue="Monday" itemLabel="Monday"/>
                         <f:selectItem itemValue="Tuesday" itemLabel="Tuesday"/>
                         <f:selectItem itemValue="Wednesday" itemLabel="Wednesday"/>
@@ -26,12 +26,12 @@
                     </h:selectOneMenu>
                 </div>
                 <h:commandButton id="updateTableBtn" class="button" value="Update Table"
-                                 action="#{onlineDiaryBean.loadTimetable()}">
-                    <f:ajax event="click" execute="@form" render="@all"/>
+                                 > <!-- action="#{onlineDiaryBean.loadTimetable()} -->
+                   <!-- <f:ajax event="click" execute="@form" render="@all"/> -->
                 </h:commandButton>
             </h:form>
             <div id="tableLayout">
-                <h:dataTable value="#{onlineDiaryBean.timetable}" var ="odc">
+                <h:dataTable> <!-- Broken functionality: value="#{onlineDiaryBean.loadTimetable()}" var ="odc" -->
                     <h:column>
                         //Column Header
                         <f:facet name="header">Appointment Start Time:</f:facet>

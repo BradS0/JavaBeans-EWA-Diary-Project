@@ -22,6 +22,11 @@ public class LoginService {
     private UserLoginFacade uf;
     private UserLogin fetchedCredentials;
 
+    /**
+     * Initiates the checking of the fetched credentials.
+     * @param u
+     * @return
+     */
     public UserLogin checkUserCredentials(UserLogin u) {
         fetchedCredentials = uf.checkUserCredentials(u.getId(), u.getUsername(), u.getPassword());
         return fetchedCredentials;
